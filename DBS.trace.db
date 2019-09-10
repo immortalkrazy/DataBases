@@ -1,0 +1,82 @@
+2019-09-03 09:55:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SHOW TABLES([*]) "; SQL statement:
+show tables() [42000-199]
+2019-09-03 10:01:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FIRST_TABLE" already exists; SQL statement:
+create table first_table [42101-199]
+2019-09-03 10:09:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Unknown data type: ; SQL statement:
+alter table first_table add column(firstcolumn, varchar(20)) [50004-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:5524)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:5254)
+	at org.h2.command.Parser.parseTableColumnDefinition(Parser.java:7932)
+	at org.h2.command.Parser.parseAlterTableAddColumn(Parser.java:7581)
+	at org.h2.command.Parser.parseAlterTable(Parser.java:7209)
+	at org.h2.command.Parser.parseAlter(Parser.java:6546)
+	at org.h2.command.Parser.parsePrepared(Parser.java:828)
+	at org.h2.command.Parser.parse(Parser.java:788)
+	at org.h2.command.Parser.parse(Parser.java:760)
+	at org.h2.command.Parser.prepareCommand(Parser.java:683)
+	at org.h2.engine.Session.prepareLocal(Session.java:627)
+	at org.h2.engine.Session.prepareCommand(Session.java:565)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:217)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:1113)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1436)
+	at org.h2.server.web.WebApp.query(WebApp.java:1111)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1073)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1060)
+	at org.h2.server.web.WebThread.process(WebThread.java:173)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+2019-09-03 10:28:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "*[*]/OCCUPY OTO 20 CHARACTERS ON INPUT*/
+INSERT INTO FIRST_TABLE VALUES('first_2nd_item') "; SQL statement:
+*/occupy oto 20 characters on input*/
+insert into first_table values('first_2nd_item') [42000-199]
+2019-09-03 10:30:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FIRST_TABLE" already exists; SQL statement:
+create table first_table [42101-199]
+2019-09-03 10:30:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "                          
+SELECT DISTINCT * FROM FIRST_TABLE
+SELECT[*] * FROM FIRST_TABLE "; SQL statement:
+/* select from the table*/
+select distinct * from first_table
+select * from first_table [42000-199]
+2019-09-03 10:30:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Duplicate column name "FIRSTCOLUMN"; SQL statement:
+alter table first_table add column(firstcolumn varchar(20)) [42121-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:451)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.table.Table.setColumns(Table.java:447)
+	at org.h2.table.TableBase.<init>(TableBase.java:75)
+	at org.h2.table.RegularTable.<init>(RegularTable.java:126)
+	at org.h2.mvstore.db.MVTable.<init>(MVTable.java:113)
+	at org.h2.mvstore.db.MVTableEngine$Store.createTable(MVTableEngine.java:236)
+	at org.h2.mvstore.db.MVTableEngine.createTable(MVTableEngine.java:119)
+	at org.h2.mvstore.db.MVTableEngine.createTable(MVTableEngine.java:42)
+	at org.h2.schema.Schema.createTable(Schema.java:706)
+	at org.h2.command.ddl.AlterTableAlterColumn.cloneTableStructure(AlterTableAlterColumn.java:399)
+	at org.h2.command.ddl.AlterTableAlterColumn.copyData(AlterTableAlterColumn.java:286)
+	at org.h2.command.ddl.AlterTableAlterColumn.update(AlterTableAlterColumn.java:201)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:133)
+	at org.h2.command.Command.executeUpdate(Command.java:267)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:233)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:1113)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1436)
+	at org.h2.server.web.WebApp.query(WebApp.java:1111)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1073)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1060)
+	at org.h2.server.web.WebThread.process(WebThread.java:173)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+2019-09-03 10:30:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT [*]"; expected "TOP, LIMIT, DISTINCT, ALL, *, NOT, EXISTS, INTERSECTS"; SQL statement:
+show table [42001-199]
