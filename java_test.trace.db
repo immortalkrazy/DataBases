@@ -1,0 +1,51 @@
+2019-09-10 11:28:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WORKERS" already exists; SQL statement:
+create table workers (ID int primary key,
+                                  Name varchar(50),
+                                  Salary int) [42101-199]
+2019-09-10 11:28:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO WORKERS VALUES (1, 'John', 1000)
+                                          ([*]2, 'Lisa', 1500)
+                                          (3, 'Sam', 1200) "; SQL statement:
+insert into workers values (1, 'John', 1000)
+                                          (2, 'Lisa', 1500)
+                                          (3, 'Sam', 1200) [42000-199]
+2019-09-10 11:28:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO WORKERS VALUES (1, 'John', 1000)
+                                          ([*]2, 'Lisa', 1500)
+                                          (3, 'Sam', 1200) "; SQL statement:
+insert into workers values (1, 'John', 1000)
+                                          (2, 'Lisa', 1500)
+                                          (3, 'Sam', 1200) [42000-199]
+2019-09-10 11:30:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO WORKERS VALUES (ID, NAME, SALARY) ([*]1, 'John', 1000,
+                                          2, 'Lisa', 1500
+                                          3, 'Sam', 1200) "; SQL statement:
+insert into workers values (ID, Name, Salary) (1, 'John', 1000,
+                                          2, 'Lisa', 1500
+                                          3, 'Sam', 1200) [42000-199]
+2019-09-10 11:35:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT [*]"; expected "TOP, LIMIT, DISTINCT, ALL, *, NOT, EXISTS, INTERSECTS"; SQL statement:
+show workers [42001-199]
+2019-09-10 11:36:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WORKERS" already exists; SQL statement:
+create table workers (ID int primary key,
+                                  Name varchar(50),
+                                  Salary int) [42101-199]
+2019-09-10 11:36:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO WORKERS (001[*], 'faisal', 1000) "; expected "identifier"; SQL statement:
+insert into workers (001, 'faisal', 1000) [42001-199]
+2019-09-10 11:36:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO WORKERS (001[*], 'faisal', 1000) "; expected "identifier"; SQL statement:
+insert into workers (001, 'faisal', 1000) [42001-199]
+2019-09-10 11:37:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WORKERS" already exists; SQL statement:
+create table workers (ID int primary key,
+                                  Name varchar(50),
+                                  Salary int) [42101-199]
+2019-09-10 11:37:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO WORKERS (1[*], 'faisal', 1000) "; expected "identifier"; SQL statement:
+insert into workers (1, 'faisal', 1000) [42001-199]
+2019-09-10 11:37:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO WORKERS (1[*], 'faisal', 1000) "; expected "identifier"; SQL statement:
+insert into workers (1, 'faisal', 1000) [42001-199]
