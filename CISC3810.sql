@@ -12,7 +12,7 @@ alter table first_table add column(firstcolumn varchar(20));  /*upto 20 characte
 -- 	adding items */
 insert into first_table values('first_1st_item');
 insert into first_table values('first_2nd_item');
-insert into first_table values('first_3rd_item'); 
+insert into first_table values('first_3rd_item');
 
 --	delete a row from the table */
 delete from first_table where firstcolumn='first_1st_item';
@@ -33,7 +33,7 @@ insert into workers values(2,'jack',20000);
 
 primary key: is  akey which can be distictly idetified
 			 must be unique.
-			 
+
 select * from workers;
 
 create table customers(cust_id int not null, --use as primary key
@@ -51,16 +51,16 @@ select * from customers;
 insert into customers values (4, 'lisa', 'liss@gmail.com'), (6, 'mir', 'mir@cuny.edu');
 
 -- 	insert multiple values providing the sequence of entry first
-insert into customers (customer_name, cust_id , cust_email) 
+insert into customers (customer_name, cust_id , cust_email)
 					  values ('lee', 5, 'lee@yahoo.com'),
 					         ('bob', 7, 'lee@hotmail.com');
-							 
--- 	create a new table							 
+
+-- 	create a new table
 create table playlist (filename varchar(50),
                                  location text,
                                  file_order int);
 
- 
+
 --	change the format of the table columns
 -- 	change filename column to be not nullsince we want to use it as key
 alter table playlist  alter column filename set not null;
@@ -73,7 +73,7 @@ alter table playlist  alter column location varchar(150);
 alter table playlist add constraint plistPKey primary key (filename, location);
 
 --	make "cust_id" foreign key for the table "orders" and for the column
-	
+
 create table orders (order_no int primary key,
                                 cust_id int,
                                 foreign key (cust_id) references
@@ -85,7 +85,7 @@ create table products (product_no int,
                        model_no varchar(50) not null, --use as primary key
                        product_name varchar(50),
                        constraint prodPK primary key(model_no));
-insert into products values (1, 'Sony', 'DVM60', 'Head Phone');					   
+insert into products values (1, 'Sony', 'DVM60', 'Head Phone');
 insert into products values (2, 'Samsung', 'GFR765', 'HD TV'),
                                            (3, 'LG', 'GFDT-98', 'HD TV');
 
@@ -116,7 +116,7 @@ select * from orders;
 -- if u delete something from parent table P>customer C>order
 delete from customers where cust_id = 4;
 -- I will get an error "referential integrity constraint violation"
--- constraints-->> h2 dosen't allow deletion of parent if 
+-- constraints-->> h2 dosen't allow deletion of parent if
 
 -- auto increment a value in the table
 create table sales_purchase (sales_ordNo int primary key auto_increment,
@@ -134,20 +134,4 @@ select * from sales_purchase;
 
 ------------------------------------------------------------------
 hi I am at home and testing something
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+some changes from desktop
