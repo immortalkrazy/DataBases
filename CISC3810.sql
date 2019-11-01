@@ -132,6 +132,8 @@ insert into sales_purchase values (default, 2184, 4, 35.75),
                                   (default, 616, 50, 25.99);
 select * from sales_purchase;
 
+------------------------------------------------------------------
+hi I am at home and testing something
 
 
 
