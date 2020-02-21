@@ -1,0 +1,21 @@
+2020-02-20 19:43:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "DEPT" already exists; SQL statement:
+create table dept (
+deptno number(2) PRIMARY KEY,
+dname varchar2 (20),
+loc varchar2 (20)) [42101-199]
+2020-02-20 19:43:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DESC[*] DEPT "; expected "DELETE, DROP, DECLARE, DEALLOCATE"; SQL statement:
+desc dept [42001-199]
+2020-02-20 19:43:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "DEPT" already exists; SQL statement:
+create table dept (
+deptno number(2) PRIMARY KEY,
+dname varchar2 (20),
+loc varchar2 (20)) [42101-199]
+2020-02-20 19:43:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DESC[*] DEPT "; expected "DELETE, DROP, DECLARE, DEALLOCATE"; SQL statement:
+desc dept [42001-199]
+2020-02-20 19:43:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DESC[*] DEPT "; expected "DELETE, DROP, DECLARE, DEALLOCATE"; SQL statement:
+desc dept [42001-199]
