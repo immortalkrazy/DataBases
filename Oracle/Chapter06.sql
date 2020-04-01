@@ -547,6 +547,3 @@ SELECT deptNo, COUNT(empNo) AS No_of_Employees
 FROM employee
 GROUP BY deptNo
 HAVING COUNT(empNo) > 10;
-
-/* testing */
-/* Visual Studio*/
