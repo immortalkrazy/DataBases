@@ -549,3 +549,4 @@ GROUP BY deptNo
 HAVING COUNT(empNo) > 10;
 
 /* testing */
+/* Visual Studio*/
