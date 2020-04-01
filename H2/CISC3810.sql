@@ -133,5 +133,3 @@ insert into sales_purchase values (default, 2184, 4, 35.75),
 select * from sales_purchase;
 
 ------------------------------------------------------------------
-hi I am at home and testing something
-some changes from desktop
