@@ -1,3 +1,23 @@
+/*
+            TABLES
+            
+    No      Book                Other           Total
+    1                           dept           
+    2                           emp
+    3       staff           
+    4       branch
+    5       privateOwner          
+    6       propertyForRent
+    7       client
+    8                           room
+    9                           booking
+    10                          guest
+    11                          remarks
+    12      lease
+    13      viewing
+    14      registration
+*/
+
 /*********************CLASSWORK STUFF************************************/
 CREATE TABLE dept
 (
@@ -673,3 +693,122 @@ SET
     duration = 6,
     rentFinish = '31-May-14'
 WHERE leaseNo = 10024;
+
+ALTER TABLE PropertyForRent
+MODIFY typeU VARCHAR2(8);
+
+ALTER TABLE PropertyForRent
+MODIFY city VARCHAR2(10);
+
+ALTER TABLE PropertyForRent
+MODIFY street VARCHAR2(20);
+
+ALTER TABLE client
+MODIFY fName VARCHAR2(8);
+
+ALTER TABLE client
+MODIFY lName VARCHAR2(8);
+
+ALTER TABLE client
+MODIFY address VARCHAR2(30);
+
+ALTER TABLE client
+MODIFY prefType VARCHAR2(8);
+
+ALTER TABLE privateOwner
+MODIFY fName VARCHAR2(8);
+
+ALTER TABLE privateOwner
+MODIFY lName VARCHAR2(8);
+
+ALTER TABLE privateOwner
+MODIFY address VARCHAR2(30);
+
+ALTER TABLE privateOwner
+ADD eMail VARCHAR2(20);
+
+ALTER TABLE privateOwner
+ADD password CHAR(8);
+
+UPDATE privateOwner
+SET
+    eMail = 'jkoegh@lhh.com',
+    password = '********'
+WHERE ownerNo = 'CO46';
+
+UPDATE privateOwner
+SET
+    eMail = 'cfarrel@gmail.com',
+    password = '********'
+WHERE ownerNo = 'CO87';
+
+UPDATE privateOwner
+SET
+    eMail = 'tinam@hotmail.com',
+    password = '********'
+WHERE ownerNo = 'CO40';
+
+UPDATE privateOwner
+SET
+    eMail = 'tony.shaw@ark.com',
+    password = '********'
+WHERE ownerNo = 'CO93';
+
+UPDATE branch
+SET
+    street = '16 Argyl St',
+    city = 'Aberdeen',
+    postcode = 'AB2 3SU'
+WHERE branchNo = 'B007';
+
+INSERT INTO branch
+VALUES('B004', '32 Manse Rd', 'Bristol', 'BS99 1NZ');
+
+ALTER TABLE staff
+MODIFY fName VARCHAR2(8);
+
+ALTER TABLE staff
+MODIFY lName VARCHAR2(8);
+
+ALTER TABLE staff
+MODIFY position VARCHAR2(10);
+
+CREATE TABLE viewing (
+    clientNo CHAR(4),
+    propertyNo CHAR(4),
+    viewDate DATE,
+    clientComment VARCHAR2(30)
+);
+
+ALTER TABLE viewing
+ADD CONSTRAINT view_client_FK FOREIGN KEY(clientNo)
+REFERENCES client(clientNo) ON DELETE SET NULL;
+
+ALTER TABLE viewing
+ADD CONSTRAINT view_prop4rent_FK FOREIGN KEY(propertyNo)
+REFERENCES propertyForRent(propertyNo) ON DELETE SET NULL;
+
+INSERT INTO viewing
+VALUES('&clientNo', '&propertyNo', '&viewDate', '&clientComment');
+
+CREATE TABLE registration (
+    clientNo CHAR(4),
+    branchNo CHAR(4),
+    staffNo CHAR(4),
+    dateJoined DATE
+);
+
+ALTER TABLE registration
+ADD CONSTRAINT reg_client_FK FOREIGN KEY(clientNo)
+REFERENCES client(clientNo) ON DELETE SET NULL;
+
+ALTER TABLE registration
+ADD CONSTRAINT reg_branch_FK FOREIGN KEY(branchNo)
+REFERENCES branch(branchNo) ON DELETE SET NULL;
+
+ALTER TABLE registration
+ADD CONSTRAINT reg_staff_FK FOREIGN KEY(staffNo)
+REFERENCES staff(staffNo) ON DELETE SET NULL;
+
+INSERT INTO registration
+VALUES('&clientNo', '&branchNo', '&staffNo', '&dateJoined');
