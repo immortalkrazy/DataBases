@@ -28,22 +28,13 @@ ALTER TABLE emp
     REFERENCES dept(deptNo) ON DELETE SET NULL;
 
 INSERT INTO dept
-VALUES
-    ('&deptNO', '&dName', '&loc');
+VALUES ('&deptNO', '&dName', '&loc');
 
 INSERT INTO emp
-VALUE(7369,
-'Smith',
-'clerk',
-7902,
-171280,
-800,
-NULL,20
-);
+VALUE(7369,'Smith','clerk',7902,171280,800,NULL,20);
 
 INSERT INTO emp
-VALUES
-    ('&empNo', '&eName', '&job', '&mgr', '&hireDate', '&sal', '&comm', '&deptNo');
+VALUES ('&empNo', '&eName', '&job', '&mgr', '&hireDate', '&sal', '&comm', '&deptNo');
 
 COLUMN  empNo FORMAT 999999;
 COLUMN eName FORMAT a15;
@@ -552,3 +543,133 @@ HAVING COUNT(empNo) > 10;
 
 /*How many databases are there in the system*/
 SELECT name, created, dbid FROM V$database;
+
+ALTER TABLE propertyForRent
+add ownerNo CHAR(4);
+
+ALTER TABLE propertyForRent
+ADD CONSTRAINT property_owner_FK FOREIGN KEY(ownerNo)
+REFERENCES PrivateOwner(ownerNo) ON DELETE SET NULL;
+
+INSERT INTO PrivateOwner
+VALUES ('&ownerNo', '&fName', '&lName', '&address', '&telNo');
+
+UPDATE propertyForRent
+SET ownerNo = 'CO46'
+WHERE propertyNo = 'PG16';
+
+UPDATE propertyForRent
+SET ownerNo = 'CO93'
+WHERE propertyNo = 'PG36';
+
+UPDATE PropertyForRent
+SET ownerNo = 'CO87'
+WHERE propertyNo = 'PG21';
+
+UPDATE propertyForRent
+SET
+    street = '6 Argyll St',
+    city = 'London',
+    postcode = 'NW2',
+    typeU = 'Flat',
+    rooms = 4,
+    rent = 400,
+    ownerNo = 'CO87'
+WHERE propertyNo = 'PL94';
+
+UPDATE PropertyForRent
+SET
+    street = '6 lawrence St',
+    city = 'Glasgow',
+    postcode = 'G11 9QX',
+    typeU = 'Flat',
+    rooms = 3,
+    rent = 350,
+    ownerNo = 'CO40'
+WHERE propertyNo = 'PG4';
+
+UPDATE PropertyForRent
+SET
+    street = '16 Holhead Rd',
+    city = 'Aberdeen',
+    postcode = 'AB7 3SU',
+    typeU = 'House',
+    rooms = 6,
+    rent = 650,
+    ownerNo = 'CO46'
+WHERE propertyNo = 'PA14';
+
+ALTER TABLE client
+ADD prefType VARCHAR2(10);
+
+ALTER TABLE client
+ADD maxRent NUMERIC(5);
+
+UPDATE client
+SET
+    address = '64 Fern Dr, Glasgow G42 0BL',
+    telNo = '0141-848-1825',
+    prefType = 'Flat',
+    maxrent = 350
+WHERE clientNo = 'CR56';
+
+UPDATE client
+SET
+    address = '5 Tarbot Rd, Aberdeen AB9 3ST',
+    telNo = '01224-196720',
+    prefType = 'Flat',
+    maxRent = 600
+WHERE clientNo = 'CR62';
+
+UPDATE client
+SET
+    address = '56 High St, London SW1 4EH',
+    telNo = '0207-774-5632',
+    prefType = 'Flat',
+    maxRent = 425
+WHERE clientNo = 'CR76';
+
+INSERT INTO client
+VALUES ('CR74', 'Mike', 'Ritchie', '18 Tain St, Paig 1YQ', '01475-392178', 'House',750);
+
+CREATE TABLE lease (
+    leaseNo NUMERIC(5)
+        CONSTRAINT lease_pk PRIMARY KEY,
+    propertyNo CHAR(4)
+        CONSTRAINT p_no_NN NOT NULL,
+    clientNo CHAR(4)
+        CONSTRAINT c_no_NN NOT NULL,
+    rent NUMERIC(5),
+    paymentMethod VARCHAR2(10),
+    deposit NUMERIC(5),
+    paid CHAR(1),
+    rentStart DATE,
+    rentFinish DATE,
+    duration NUMERIC(3)
+);
+
+ALTER TABLE lease
+ADD CONSTRAINT paid_yn_check CHECK (paid IN('Y', 'N'));
+
+ALTER TABLE lease
+ADD CONSTRAINT lease_pNo_FK FOREIGN KEY (propertyNo)
+REFERENCES PropertyForRent(propertyNo) ON DELETE SET NULL;
+
+ALTER TABLE lease
+ADD CONSTRAINT lease_client_FK FOREIGN KEY (clientNo)
+REFERENCES client(clientNo) ON DELETE SET NULL;
+
+INSERT INTO lease
+VALUES (10024, 'PA14', 'CR62', 650, 'Visa', 1300, 'Y', '1-Jun-13', '31-may-14', 12);
+
+INSERT INTO lease
+VALUES (10075, 'PL94', 'CR76', 400, 'Cash', 800, 'N', '1-Aug-13', '31-Jan-14', 12);
+
+INSERT INTO lease
+VALUES (10012, 'PG21', 'CR74', 600, 'Cheque', 1200, 'Y', '1-Jul-13', '30-Jun-14', 12);
+
+UPDATE lease
+SET
+    duration = 6,
+    rentFinish = '31-May-14'
+WHERE leaseNo = 10024;
