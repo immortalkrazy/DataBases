@@ -549,3 +549,7 @@ GROUP BY deptNo
 HAVING COUNT(empNo) > 10;
 
 /*************************************************/
+
+/*How many databases are there in the system*/
+SELECT name, created, dbid FROM V$database;
+
