@@ -872,3 +872,21 @@ REFERENCES staff(staffNo) ON DELETE SET NULL;
 
 INSERT INTO registration
 VALUES('&clientNo', '&branchNo', '&staffNo', '&dateJoined');
+
+/*---------chapter 6 EXAMPLES----------------*/
+SELECT *
+FROM staff;
+
+SELECT staffNo, fName || ' ' || lName AS Full_Name, salary
+FROM staff;
+
+SELECT DISTINCT propertyNo
+FROM viewing;
+
+SELECT staffNo, lName, salary/12 AS Monthly_Salaary
+FROM staff;
+
+SELECT staffNo, fName, lName, position, salary
+FROM staff
+WHERE salary > 10000;
+
