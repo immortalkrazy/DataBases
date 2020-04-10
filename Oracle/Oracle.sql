@@ -659,6 +659,44 @@ SET
     ownerNo = 'CO46'
 WHERE propertyNo = 'PA14';
 
+ALTER TABLE propertyForRent
+ADD staffNo CHAR(4);
+
+ALTER TABLE propertyForRent
+ADD branchNo CHAR(4);
+
+ALTER TABLE propertyForRent
+ADD CONSTRAINT pfr_stf_FK FOREIGN KEY(staffNo)
+REFERENCES staff(StaffNo) ON DELETE SET NULL;
+
+ALTER TABLE propertyForRent
+ADD CONSTRAINT pfr_brc_FK FOREIGN KEY(branchNo)
+REFERENCES branch(branchNo) ON DELETE SET NULL;
+
+UPDATE propertyForRent
+SET staffNo = 'SA9', branchNo = 'B007'
+WHERE propertyNo = 'PA14';
+
+UPDATE propertyForRent
+SET staffNo = 'SL41', branchNo = 'B005'
+WHERE propertyNo = 'PL94';
+
+UPDATE propertyForRent
+SET staffNo = NULL, branchNo = 'B003'
+WHERE propertyNo = 'PG4';
+
+UPDATE propertyForRent
+SET staffNo = 'SG37', branchNo = 'B003'
+WHERE propertyNo = 'PG36';
+
+UPDATE propertyForRent
+SET staffNo = 'SG37', branchNo = 'B003'
+WHERE propertyNo = 'PG21';
+
+UPDATE propertyForRent
+SET staffNo = 'SG14', branchNo = 'B003'
+WHERE propertyNo = 'PG16';
+
 ALTER TABLE client
 ADD prefType VARCHAR2(10);
 
@@ -883,6 +921,7 @@ FROM staff;
 SELECT DISTINCT propertyNo
 FROM viewing;
 
+/*6.4*/
 SELECT staffNo, lName, salary/12 AS Monthly_Salaary
 FROM staff;
 
@@ -890,3 +929,128 @@ SELECT staffNo, fName, lName, position, salary
 FROM staff
 WHERE salary > 10000;
 
+/*6.6*/
+SELECT *
+FROM branch
+WHERE city = 'London' OR city = 'Glasgow';
+
+/*6.7*/
+SELECT *
+FROM staff
+WHERE salary BETWEEN 20000 AND 30000;
+
+/*6.8*/
+SELECT *
+FROM staff
+WHERE position = 'Manager' OR position = 'Supervisor';
+
+SELECT *
+FROM staff
+WHERE position IN ('Manager', 'Supervisor');
+
+SELECT staffNo, fName || ' ' || lName AS Name, POSITION
+FROM staff
+WHERE position IN ('Manager', 'Supervisor');
+
+/*6.9*/
+SELECT *
+FROM privateOwner
+WHERE address LIKE '%Glasgow%';
+
+SELECT ownerNo, fName, lName, telNo
+FROM privateOwner
+WHERE address LIKE '%Glasgow%';
+
+/*6.10*/
+SELECT clientNo, viewDate
+FROM viewing
+WHERE propertyNo = 'PG4' AND clientComment IS NULL;
+
+/*6.11*/
+SELECT staffNo, fName, lName, salary
+FROM staff
+ORDER BY salary DESC;
+
+SELECT staffNo, fName, lName, salary
+FROM staff
+ORDER BY salary ASC;
+
+/*6.12*/
+SELECT propertyNo, typeU, rooms, rent
+FROM propertyForRent
+ORDER BY typeU;
+
+/*6.13*/
+SELECT COUNT(*) AS My_Count
+FROM propertyForRent
+WHERE rent > 350;
+
+/*6.14*/
+SELECT COUNT (DISTINCT propertyNo) AS My_Count
+FROM viewing
+WHERE viewDate BETWEEN '1-May-13' AND '31-May-13';
+
+/*6.15*/
+SELECT COUNT(staffNo) AS My_Count, SUM(salary) AS My_Sum
+FROM staff
+WHERE position = 'Manager';
+
+/*6.16*/
+SELECT MIN(salary) AS myMin, MAX(salary) AS myMax, AVG(salary) AS myAvg
+FROM staff;
+
+/*6.17*/
+SELECT branchNO, COUNT(staffNo) AS stf_Count, SUM(salary) AS My_Sum
+FROM staff
+GROUP BY branchNo
+ORDER BY branchNo;
+
+SELECT branchNO, COUNT(staffNo) AS stf_Count, SUM(salary) AS My_Sum
+FROM staff
+GROUP BY branchNo
+ORDER BY My_Sum;
+
+/*6.18*/
+SELECT branchNo, COUNT(staffNo) AS stf_Count, SUM(salary) AS My_Sum
+FROM staff
+GROUP BY branchNo
+HAVING COUNT(staffNo) > 1
+ORDER BY branchNo;
+
+/*6.19*/
+SELECT staffNo, fName, lName, salary
+FROM staff
+WHERE branchNo = (SELECT branchNo
+				  FROM branch
+				  WHERE street = '163 Main St');
+
+/*6.20*/
+SELECT staffNo, salary - (SELECT AVG(salary)
+						  FROM staff) AS salDiff
+FROM staff
+WHERE salary > (SELECT AVG(salary)
+			 FROM staff)
+ORDER BY salDiff;
+
+/*6.21*/
+SELECT *
+FROM propertyForRent
+WHERE staffNo IN (SELECT staffNo
+				  FROM staff
+				  WHERE branchNo = (SELECT branchNo
+				  					FROM branch
+									WHERE street = '163 Main St'));
+
+/*6.22*/
+SELECT *
+FROM staff
+WHERE salary > SOME (SELECT salary
+					 FROM staff
+					 WHERE branchNo = 'B003');
+
+/*6.23*/
+SELECT staffNo, fName, lName, position, salary
+FROM staff
+WHERE salary > ALL (SELECT salary
+					FROM staff
+					WHERE branchNO = 'B003');					
