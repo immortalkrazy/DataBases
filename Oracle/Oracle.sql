@@ -1053,4 +1053,6 @@ SELECT staffNo, fName, lName, position, salary
 FROM staff
 WHERE salary > ALL (SELECT salary
 					FROM staff
-					WHERE branchNO = 'B003');					
+					WHERE branchNO = 'B003');
+
+/*6.24*/
