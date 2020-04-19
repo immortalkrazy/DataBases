@@ -95,7 +95,53 @@ FROM J
 GROUP BY C
 ORDER BY colorCount;
 
--- g
+-- g ///////////////
 SELECT P, COUNT(C) AS colorCount
 FROM J
 WHERE P = 'Melissa';
+
+-- h
+SELECT C, AVG(N)
+FROM J
+GROUP BY C
+ORDER BY C;
+
+-- i
+SELECT A, MAX(N)
+FROM J
+GROUP BY A
+ORDER BY A;
+
+-- j
+SELECT A, MIN(N)
+FROM J
+GROUP BY A
+ORDER BY A;
+
+-- k
+SELECT A, SUM(N)
+FROM J
+GROUP BY A
+ORDER BY A;
+
+SELECT A, SUM(N)
+FROM J
+GROUP BY A;
+
+-- l
+CREATE VIEW greenJelly
+AS SELECT P, A
+    FROM J
+    WHERE C = 'Green'
+    ORDER BY A;
+
+SELECT *
+FROM greenJelly;
+
+UPDATE J
+SET C = 'Green'
+WHERE P = 'Smith';
+
+INSERT INTO J
+VALUES (id.nextval, 'Thomas', 28, 'Green', 20);
+
