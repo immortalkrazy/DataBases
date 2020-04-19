@@ -225,7 +225,7 @@ INSERT INTO propertyForRent
 VALUES
 	('&propertyNo', '&street', '&city', '&postcode', '&typeU', '&rooms',  &rent);
 
-UPDATE TABLE staff
+UPDATE staff
 SET postcode
 = 'G32 4QX'
 WHERE propertyNo = 'PG36';
