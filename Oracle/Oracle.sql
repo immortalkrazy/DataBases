@@ -1114,7 +1114,6 @@ WHERE salary > ALL (SELECT salary
 
 
 
-
 /*                     Mid Term Exam                                   */
 -- /////-- TRUE/FALSE --///// --
 
