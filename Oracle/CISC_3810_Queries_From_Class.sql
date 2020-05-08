@@ -173,3 +173,30 @@ SELECT EMPNO, ENAME, JOB, HIREDATE,DEPTNO
 FROM EMP
 WHERE JOB IN ( 'CLERK', 'ANALYST') AND HIREDATE >= '01-
 JAN-82' AND DEPTNO = 20;
+
+-- ClassWork 05/07/2020 --
+
+CREATE TABLE customers (
+    customerID NUMERIC(3) PRIMARY KEY,
+    customerName VARCHAR2(20),
+    customerCity VARCHAR2 (20),
+    customerState CHAR(2)
+);
+
+CREATE TABLE orders (
+    orderNum CHAR(4) PRIMARY KEY,
+    customerID NUMERIC(3),
+    orderDate DATE,
+    orderAmount NUMERIC(8,2),
+    hasItBeenPaid CHAR(1)
+);
+
+ALTER TABLE orders
+ADD CONSTRAINT order_cust_FK FOREIGN KEY(customerID)
+REFERENCES customers(customerID) ON DELETE SET NULL;
+
+INSERT INTO customers
+VALUES ('&customerID', '&customerName', '&customerCity', '&customerState');
+
+INSERT INTO orders
+VALUES ('&orderNum', '&customerID', '&orderDate', '&orderAmount', '&hasItBeenPaid');

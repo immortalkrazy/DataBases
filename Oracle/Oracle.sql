@@ -1112,8 +1112,6 @@ WHERE salary > ALL (SELECT salary
 
 
 
-
-
 /*                     Mid Term Exam                                   */
 -- /////-- TRUE/FALSE --///// --
 
@@ -1356,7 +1354,7 @@ WHERE P = '%s';
 -- q3
 SELECT DISTINCT P
 FROM J
-WHERE P = '____s';
+WHERE P LIKE '____s';
 
 -- r1
 SELECT DISTINCT P
@@ -1424,6 +1422,7 @@ WHERE empID = 'EM02';
 SELECT j.P, j.A, w.O
 FROM J j, W w
 WHERE j.P = w.N AND j.N >= 1;
+
 -- t
 	(SELECT P
 	FROM J
