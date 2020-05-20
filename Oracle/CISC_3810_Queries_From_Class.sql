@@ -248,3 +248,6 @@ WHERE orderDate = '12-Feb-2013';
 
 SELECT SYSDATE
 FROM dual;
+
+
+-- ClassWork 05/14/2020 --
