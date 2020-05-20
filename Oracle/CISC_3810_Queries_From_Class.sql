@@ -251,3 +251,6 @@ FROM dual;
 
 
 -- ClassWork 05/14/2020 --
+
+-- Views
+-- 
