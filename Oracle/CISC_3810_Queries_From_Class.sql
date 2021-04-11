@@ -1,8 +1,8 @@
 create table dept (
 deptno number(2) PRIMARY KEY,
 dname varchar2(20),
-loc varchar2(20));
-)
+loc varchar2(20)
+);
 
 desc dept;
 
