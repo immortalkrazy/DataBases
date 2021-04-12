@@ -1,18 +1,48 @@
--- /////-- TRUE/FALSE --///// --
+/*
+You want to have a table called J (for JellyBeans) with fields for the name of a person, 
+the age of the person, the name of a color, and the number of jelly beans of that color the person ate. 
+The fields are called P (for the person’s name), A(for the person’s age), C (for the color’s name), and N (for the number eaten).
+A person can eat more than one color jelly bean, and a color can be eaten by more than one person.
 
--- 1    True
--- 2    True
--- 3    True
--- 4    True
--- 5    True
+For each part, give one or more SQL commands/statements which will:
+    a. create the table (include the primary key constraint)
+    b. insert a row saying Mary ate 15 blue jelly beans and she is 19 years old
+    c. find the name and age of each person who ate one or more black jelly beans but did not eat any white jelly beans, order by the name of the person
+    d. delete all rows containing the color red 
+    e. add 3 to the number eaten for all rows in which the person has an age that is 30 or above
+    f. find the total number of jelly beans eaten of each color; give the name of the color and the total number of jelly beans of that color; order by total number 
+    g. determine how many different colors were eaten by Melissa; print Melissa’s name and the number of different colors. 
+    h. find the average amount of jelly beans eaten by color
+    i. find the maximum amount of jelly beans eaten by age 
+    j. find the minimum amount of jelly beans eaten by age 
+    k. find the total amount of jelly beans eaten by the person’s name age 
+    l. create a view consisting of all the rows in the table for which the person ate green jelly beans, print the view, ordered by the person’s name and descending age. 
+    m. find the total amount of people that are data scientists
+    n. give the names and ages of everyone that has an occupation as well as those that do not have one
+    o. give the names of the persons who have eaten more than the average amount of all jelly beans 
+    p. using the view from step l, find how many of these rows have an age less than 15
+    q. determine all names of persons that end with an ‘S’ – give two (2) SQL statements 
+    r. determine the names of all persons that start with an ‘S’ – give two (2) SQL statements 
 
-/* You want to have a table called J (for JellyBeans) with fields 
-for the name of a person, the age of the person, the name of a color, 
-and the number of jelly beans of that color the person ate. The fields
-are called P (for the person’s name), A(for the person’s age), 
-C (for the color’s name), and N (for the number eaten). 
-A person can eat more than one color jelly bean, and a color can be 
-eaten by more than one person. */
+Assume you have a second table, called W (for Workers) with fields for the name of a worker (N) and the occupation of a worker (O). 
+This table has already been created and filled with values. 
+
+Use both tables (J and W) to give SQL for the following:
+    s. find the name, age, and occupation of each person who ate one or more jelly beans
+    t. find the name of each person who ate one or more blue jelly beans and one or more pink jelly beans, and whose occupation is lawyer or doctor 
+    TRUE/FALSE 
+    a.	for the column P in the table J the datatype has to be ‘number’. 
+    Ans:True/False 
+    b.	for the column A in the table J the datatype has to be ‘date’.  
+    Ans: True/False
+    c.	for the column C in the table J the datatype could be ‘varchar2’. 
+    Ans: True/False
+    d.	for the column N in the table J the datatype could be ‘number’. 
+    Ans: True/False
+    e.	for the column O in the table W the datatype could be ‘varchar2’. 
+    Ans: True/False 
+
+*/
 
 -- a
 CREATE TABLE J (
@@ -311,3 +341,4 @@ WHERE empID = 'EM05';
 -- c    True  (color is varchar2)
 -- d    True  (its a number)
 -- e    True  (Occopation has to be varchar2)
+

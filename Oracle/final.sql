@@ -1,3 +1,109 @@
+/*
+Given the following THREE tables :        ACTOR       MOVIE       SALARY  
+
+ACTOR (ActID, ActName, ActSex)
+
+ActID	ActName	        ActSex
+M61	    Marilyn Monroe  Female 
+H876	Tom Hanks 	    Male 
+W323	John Wayne 	    Male
+
+Ex. M61 Marilyn Monroe Female;   H876 Tom Hanks Male;   W323 John Wayne Male 
+ActSex is limited to Male or Female (nothing else – no nulls). 
+The term Actor on this exam encompasses both men and women. 
+
+
+MOVIE(MovieID, MovieName, MovieYR, MovieRating)
+
+MovieID	MovieName 	    MovieYR	MovieRating
+M654	Godfather	    1995	PG
+R321	The Rock 	    2003	PG13
+S876 	Skyfall 	    2011	R
+SN12	SnowWhite 	    1944	G
+MM12	Mickey Mouse 	1938	G
+
+Ex. M654 Godfather     1995 PG;    R321 The Rock 2003 PG13;       S876 Skyfall 2011 R;
+    SN12  SnowWhite  1944 G;      MM12 Mickey Mouse 1938 G 
+There are ONLY 4 values for MovieRating: G  PG PG13 R (nothing else – no nulls)
+
+SALARY(MovieID, ActID, SalaryPaid)
+
+MovieID 	ActID 	SalaryPaid
+W323 	    S876	$500,000.00
+
+Ex. W323 acted in S876 and earned $500,000.00
+An actor can appear in many movies. A movie can have many actors. 
+
+1.	Write the SQL needed to create these three tables. You must have all the constraints mentioned above including referential integrity. 
+
+2.	Write the SQL needed to insert the following data into these tables. 
+    Actor W323 John Wayne is a Male who acted in the 1954 movie R34 Rio Grande which was G rated and earned $200,000.00.
+
+3.	I want to determine if Male actors were paid more than Female actors in 2016. 
+    Write the SQL to determine the average salary of the Male actors who appeared in movies made in 2016. I want ONE number showing the average salary for all Male actors. 
+
+4.	Write the SQL needed to list the names of ACTORS who did not appear in any movie made in 2016.
+
+5.	Write the SQL needed to determine the number of movies made by rating for 2016. 
+    For example, there were 410 G rated movies, 123 PG rated movies, 874 PG13 rated movies, 203 R rated movies made in 2016.
+
+6.	Write the SQL needed to list the name(s) of the Female actor who earned the most money in 2016. 
+    Note: The female actor could have appeared in many movies in 2016. You need to list the name(s) of the female actor and the total amount earned in 2016. 
+    Note: There can be a few actors who earned the same total amount. 
+
+7.	Write the SQL needed to delete all the information about Movie M123 while maintaining referential integrity. 
+
+8.	Write a SQL statement that would permanently remove the ‘MovieRating’ column from the Movie table. 
+
+9.	Write a SQL statement that finds the total number of movies that Marilyn Munroe acted in and the total amount of money that she was paid.
+
+10.	Create a view called MM containing the name and year of each movie made by Actor M61. 
+    In addition, the view must contain the salary earned by Actor M61 for each movie. 
+    Using the view MM created, list the movie names and salary per movie in year order. 
+
+Mutiple Choice Questions:-
+
+11.	Which of the following statements regarding primary key is false.
+    (a)	Primary key cannot have null values
+    (b)	Primary key may contain duplicate values
+    (c)	Primary key cannot be applied for multiple columns
+    (d)	All of the above 
+
+
+12.	All the following can ONLY be used with numeric data types except: 
+    (a)	AVG
+    (b)	COUNT
+    (c)  SUM
+    ( d ) STDDEV
+
+13.	Find the average salary that was paid by actor
+    (a)	select avg(SalaryPaid) from SALARY
+    (b)	select avg(qty*SalaryPaid) from SALARY 
+    (c)	select avg(SalaryPaid) from SALARY group by ActID
+    (d)	other 
+
+
+14.	Find the last movie that an actor was in 
+    (a)	select MovieID, last_value(MovieYR) over (partition by MovieID order by MovieYR) from MOVIE 
+    (b)	select MovieID, last_value(MovieYR) over (partition by MovieID order by MovieYR) from MOVIE natural inner join ACTOR 
+    (c)	select MovieID, last_value(MovieYR) over (partition by MovieID order by MovieYR) from MOVIE left outer join ACTOR 
+    (d)	other 
+
+
+15.	Find all actors who were in the Godfather
+    (a)	select * from MOVIE where  MovieName = ‘Godfather’
+    (b)	select * from MOVIE inner join ACTOR inner join SALARY where MovieName = ‘Godfather’
+    (c)	select distinct from MOVIE inner join ACTOR using(ActID) having MovieName = ‘Godfather’
+    (d)	other
+
+
+16.	Find all actors who were in the Godfather and in Skyfall 
+    (a)	select * from MOVIE where MovieName in (‘Godfather’, ‘Skyfall’)
+    (b)	select * from MOVIE inner join ACTOR on ActID and MovieName in (‘Godfather’ , ‘Skyfall’)
+    (c)	select ActID from MOVIE where MovieName in (‘Godfather’,’Skyfall’)
+    (d)	other 
+
+*/
 
 CREATE TABLE actor (
     ActID CHAR(4) NOT NULL,
