@@ -110,7 +110,7 @@ CREATE TABLE actor (
     ActName VARCHAR2(20),
     ActSex CHAR(8) NOT NULL,
     CHECK (ActSex IN ('Male', 'Female')),
-    PRIMARY KEY (ActID)
+    PRIMARY KEY (ActID)                         
 );
 
 INSERT INTO actor
